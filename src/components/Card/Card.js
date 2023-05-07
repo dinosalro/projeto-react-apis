@@ -3,7 +3,7 @@ import { getColors } from "../../utils/ReturnCardColor";
 import { getTypes } from "../../utils/ReturnPokemonType";
 import pokeball from "../../assets/pngwing 2.png";
 import { GlobalContext } from "../../contexts/GlobalContext";
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useContext, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { goToDetailsPage } from "../../routes/coordinator";
 import {
@@ -15,19 +15,20 @@ import {
   Pokeball,
   CatchButton,
   Pokemon,
+  Infos,
 } from "./Card.styled";
 
 function Card(props) {
   const context = useContext(GlobalContext);
-  const { addToPokedex, removeFromPokedex } = context;
+  const { addToPokedex, removeFromPokedex, setPokemonNow } = context;
+
+  const [pokemon, setPokemon] = useState([]);
 
   // hook para saber nosso path atual
   const location = useLocation();
 
   // hook para redirecionar
   const navigate = useNavigate();
-
-  const [pokemon, setPokemon] = useState({});
 
   useEffect(() => {
     fetchPokemon();
@@ -43,25 +44,26 @@ function Card(props) {
     }
   };
 
-  if (pokemon.types != undefined) {
-    console.log(pokemon.types[0].type.name);
+  function HandleClick() {
+    setPokemonNow(pokemon);
+    goToDetailsPage(navigate, pokemon.id);
   }
 
   return (
     <Container
       color={getColors(
-        pokemon.types != undefined ? pokemon.types[0].type.name : "Bug"
+        pokemon.types != undefined ? pokemon.types[0].type.name : "bug"
       )}
     >
-      <div>
-        <PokemonNumber>{pokemon.id}</PokemonNumber>
+      <Infos>
+        <PokemonNumber>#{pokemon.id}</PokemonNumber>
         <PokemonName>{pokemon.name}</PokemonName>
         <TypesContainer>
           {pokemon.types != undefined
             ? pokemon.types.map((type) => {
                 return (
                   <PokemonType
-                    key={pokemon.id}
+                    key={type.id}
                     src={getTypes(type.type.name)}
                     alt=""
                   />
@@ -69,10 +71,15 @@ function Card(props) {
               })
             : null}
         </TypesContainer>
-        <p>Detalhes</p>
-      </div>
+        <button className="detalhes" onClick={() => HandleClick()}>
+          Detalhes
+        </button>
+      </Infos>
       <div>
-        <Pokemon src={pokemon.sprites?.front_default} alt="" />
+        <Pokemon
+          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`}
+          alt=""
+        />
 
         {location.pathname === "/" ? (
           <CatchButton onClick={() => addToPokedex(pokemon)}>

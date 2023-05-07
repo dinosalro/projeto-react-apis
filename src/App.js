@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { GlobalContext } from "./contexts/GlobalContext";
 
 export default function App() {
+  const [pokemonNow, setPokemonNow] = useState({});
   const [pokelist, setPokelist] = useState([]);
   const [pokedex, setPokedex] = useState([]);
 
@@ -46,6 +47,8 @@ export default function App() {
     addToPokedex,
     pokedex,
     removeFromPokedex,
+    pokemonNow,
+    setPokemonNow,
   };
 
   return (

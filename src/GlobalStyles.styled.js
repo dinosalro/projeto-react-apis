@@ -7,13 +7,18 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   * {
-    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    margin: 0 auto;
     padding: 0;
     box-sizing: border-box;
+    
   }
 
   #root {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 0 auto;
-    max-width: 1200px;
+    
   }
 `;

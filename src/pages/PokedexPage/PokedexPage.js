@@ -12,6 +12,7 @@ function PokedexPage() {
   return (
     <Container>
       <Header />
+      <h1 className="titulo">Meus Pokémons</h1>
       <section>
         {pokedex.map((pokemon) => (
           <Card

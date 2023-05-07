@@ -1,15 +1,47 @@
 import styled from "styled-components";
 
+export const ContainerDetalhes = styled.div`
+  display: flex;
+  flex-direction: column;
+  background-color: #5e5e5e;
+  width: 100vw;
+  min-height: 100vh;
+  align-items: center;
+
+  .titulo {
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 72px;
+    color: #ffff;
+    min-width: 1400px;
+    margin: 50px 0;
+  }
+`;
+
+export const Box = styled.p`
+  background-color: #ffff;
+  width: 300px;
+  min-height: 250px;
+  height: 100%;
+  margin: 20px;
+  border-radius: 12px;
+`;
+
 export const Container = styled.div`
   padding: 16px;
-  min-width: 400px;
-  max-width: 440px;
+  min-width: 1400px;
   background-color: ${(props) => props.color};
   border-radius: 12px;
   display: flex;
+  height: auto;
   position: relative;
   margin: 0 50px 50px 50px;
   color: #ffffff;
+
+  section {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const PokemonNumber = styled.p`
@@ -41,9 +73,9 @@ export const TypesContainer = styled.div`
 `;
 export const Pokeball = styled.img`
   position: absolute;
+  height: 100%;
   top: 0;
   right: 0;
-  height: 100%;
 `;
 
 export const CatchButton = styled.button`
@@ -66,8 +98,8 @@ export const CatchButton = styled.button`
 `;
 
 export const Pokemon = styled.img`
-  width: 193px;
-  height: 193px;
+  width: 270px;
+  height: 270px;
   position: absolute;
   top: -60px;
   right: 0;

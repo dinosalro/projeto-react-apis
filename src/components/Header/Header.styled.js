@@ -1,19 +1,54 @@
 import styled from "styled-components";
 
 export const Container = styled.header`
-  position: relative;
-  height: 70px;
-  font-size: 24px;
-  font-weight: 700;
-
-  display: flex;
+  height: 160px;
+  width: 100%;
+  background-color: white;
+  display: grid;
   align-items: center;
-  justify-content: center;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+
+  img {
+    height: 113px;
+    grid-column: 2;
+  }
+
+  .returnButton {
+    height: 57px;
+    background-color: transparent;
+    color: black;
+    text-decoration: underline;
+    font-weight: 700;
+    size: 24px;
+    line-height: 36px;
+  }
+
+  .removeButton {
+    height: 57px;
+    width: 287px;
+    border-radius: 8px;
+    padding: 4px 10px 4px 10px;
+    background-color: #ff6262;
+    border: none;
+    color: white;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    cursor: pointer;
+  }
 
   button {
-    position: absolute;
-    left: 0;
-    height: 30px;
-    padding: 0 4px;
+    height: 57px;
+    width: 287px;
+    border-radius: 8px;
+    padding: 4px 10px 4px 10px;
+    background-color: #33a4f5;
+    border: none;
+    color: white;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    cursor: pointer;
   }
 `;

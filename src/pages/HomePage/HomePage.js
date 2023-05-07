@@ -20,6 +20,7 @@ function HomePage() {
   return (
     <Container>
       <Header />
+      <h1 className="titulo">Todos os Pokémons</h1>
       <section>
         {filteredPokelist().map((pokemon) => (
           <Card

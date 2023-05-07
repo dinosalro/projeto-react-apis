@@ -4,11 +4,13 @@ import { GlobalContext } from "../contexts/GlobalContext";
 import HomePage from "../pages/HomePage/HomePage";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 import PokedexPage from "../pages/PokedexPage/PokedexPage";
+import Detalhes from "../pages/Detalhes/Detalhes";
 
 function Router() {
   const context = useContext(GlobalContext);
 
-  const { pokelist, addToPokedex, pokedex, removeFromPokedex } = context;
+  const { pokelist, addToPokedex, pokedex, removeFromPokedex, pokemonNow } =
+    context;
 
   return (
     <BrowserRouter>
@@ -29,6 +31,17 @@ function Router() {
             <PokedexPage
               pokedex={pokedex}
               removeFromPokedex={removeFromPokedex}
+            />
+          }
+        />
+        <Route
+          path="/details/:id"
+          element={
+            <Detalhes
+              pokemon={pokemonNow}
+              pokelist={pokelist}
+              removeFromPokedex={removeFromPokedex}
+              pokedex={pokedex}
             />
           }
         />
