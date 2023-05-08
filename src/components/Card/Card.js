@@ -20,19 +20,30 @@ import {
 
 function Card(props) {
   const context = useContext(GlobalContext);
-  const { addToPokedex, removeFromPokedex, setPokemonNow } = context;
+  const {
+    addToPokedex,
+    removeFromPokedex,
+    setPokemonNow,
+    pokemonNow,
+    setModal,
+    setCardModal,
+  } = context;
 
   const [pokemon, setPokemon] = useState([]);
-
-  // hook para saber nosso path atual
+  const [response, setResponse] = useState({});
   const location = useLocation();
 
-  // hook para redirecionar
   const navigate = useNavigate();
 
   useEffect(() => {
     fetchPokemon();
   }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem("pokemon", JSON.stringify(pokemonNow));
+    const storedPokemon = window.localStorage.getItem("pokemon");
+    setResponse(storedPokemon ? JSON.parse(storedPokemon) : {});
+  }, [pokemonNow]);
 
   const fetchPokemon = async () => {
     try {
@@ -47,6 +58,18 @@ function Card(props) {
   function HandleClick() {
     setPokemonNow(pokemon);
     goToDetailsPage(navigate, pokemon.id);
+  }
+
+  function openModalAdd() {
+    setModal(true);
+    addToPokedex(pokemon);
+    setCardModal(1);
+  }
+
+  function openModalRemove() {
+    setModal(true);
+    removeFromPokedex(pokemon);
+    setCardModal(0);
   }
 
   return (
@@ -82,13 +105,9 @@ function Card(props) {
         />
 
         {location.pathname === "/" ? (
-          <CatchButton onClick={() => addToPokedex(pokemon)}>
-            Capturar!
-          </CatchButton>
+          <CatchButton onClick={() => openModalAdd()}>Capturar!</CatchButton>
         ) : (
-          <CatchButton onClick={() => removeFromPokedex(pokemon)}>
-            Remover!
-          </CatchButton>
+          <CatchButton onClick={() => openModalRemove()}>Remover!</CatchButton>
         )}
       </div>
       <Pokeball src={pokeball} alt="pokeball" />
