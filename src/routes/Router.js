@@ -5,6 +5,8 @@ import HomePage from "../pages/HomePage/HomePage";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 import PokedexPage from "../pages/PokedexPage/PokedexPage";
 import Detalhes from "../pages/Detalhes/Detalhes";
+import { GlobalStyle } from "../GlobalStyles.styled";
+import Modal from "../components/Modal/Modal";
 
 function Router() {
   const context = useContext(GlobalContext);
@@ -14,6 +16,7 @@ function Router() {
 
   return (
     <BrowserRouter>
+      <GlobalStyle />
       <Routes>
         <Route
           path="/"

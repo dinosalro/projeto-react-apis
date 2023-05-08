@@ -6,9 +6,9 @@ export const GlobalStyle = createGlobalStyle`
     /* available font-weight: 400, 500 and 700 */
   }
 
-  * {
+  *{
     font-family: 'Poppins', sans-serif;
-    margin: 0 auto;
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
     
@@ -18,7 +18,7 @@ export const GlobalStyle = createGlobalStyle`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 auto;
+    
     
   }
 `;

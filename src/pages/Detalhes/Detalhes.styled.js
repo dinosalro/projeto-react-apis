@@ -18,17 +18,128 @@ export const ContainerDetalhes = styled.div`
   }
 `;
 
-export const Box = styled.p`
+export const Barra = styled.div`
+  width: 100%;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  div {
+    position: absolute;
+    left: 0;
+    height: 10px;
+    border-radius: 10px;
+  }
+`;
+
+export const BoxPokemon = styled.div`
+  padding: 20px;
+  background-color: #ffff;
+  width: 282px;
+  height: 282px;
+  margin: 20px 20px 0 20px;
+  border-radius: 12px;
+  display: flex;
+
+  .imgpokemon {
+    width: 242px;
+  }
+`;
+
+export const BoxStats = styled.div`
+  width: 343px;
+  height: 100%;
+  padding: 20px;
+  background-color: #ffff;
+  color: black;
+  margin-top: 20px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+
+  h1 {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .total {
+    display: grid;
+    grid-template-columns: 25% 20% 55%;
+    width: 100%;
+    align-items: center;
+    margin-top: 10px;
+
+    p {
+      width: 100%;
+      font-size: 14px;
+      display: flex;
+      justify-content: flex-end;
+      color: #5d6266;
+      align-items: center;
+    }
+    span {
+      font-weight: bolder;
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  .status {
+    display: grid;
+    grid-template-columns: 25% 20% 55%;
+    width: 100%;
+    color: #5d6266;
+    border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    margin-top: 10px;
+
+    span {
+      font-weight: bolder;
+      display: flex;
+      justify-content: center;
+    }
+
+    p {
+      width: 100%;
+      font-size: 14px;
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+`;
+
+export const BoxMoves = styled.div`
+  color: black;
+  padding: 20px;
   background-color: #ffff;
   width: 300px;
-  min-height: 250px;
   height: 100%;
-  margin: 20px;
+  margin: 0 20px;
   border-radius: 12px;
+
+  .movesContainer {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    .moves {
+      margin-top: 10px;
+      .move {
+        background-color: #ececec;
+        border-style: dashed;
+        border: dashed 2px rgba(0, 0, 0, 0.14);
+        border-radius: 15px;
+        padding: 10px;
+        width: fit-content;
+      }
+    }
+  }
 `;
 
 export const Container = styled.div`
-  padding: 16px;
+  padding: 16px 16px 36px 16px;
+
   min-width: 1400px;
   background-color: ${(props) => props.color};
   border-radius: 12px;
@@ -78,25 +189,6 @@ export const Pokeball = styled.img`
   right: 0;
 `;
 
-export const CatchButton = styled.button`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 4px 10px;
-  width: 146px;
-  height: 38px;
-  background: #ffffff;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  position: absolute;
-  bottom: 10px;
-  right: 22px;
-  z-index: 2;
-  color: #000;
-`;
-
 export const Pokemon = styled.img`
   width: 270px;
   height: 270px;
@@ -107,8 +199,8 @@ export const Pokemon = styled.img`
 `;
 
 export const Infos = styled.div`
-  margin-left: 0;
-
+  margin: 20px 20px 0 20px;
+  padding: 5px;
   .detalhes {
     color: #ffff;
     font-weight: 600;

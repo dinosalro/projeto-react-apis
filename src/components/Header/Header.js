@@ -7,7 +7,8 @@ import { GlobalContext } from "../../contexts/GlobalContext";
 
 function Header() {
   const context = useContext(GlobalContext);
-  const { pokemonNow, removeFromPokedex, pokedex } = context;
+  const { pokemonNow, removeFromPokedex, pokedex, setModal, setCardModal } =
+    context;
   // hook para saber nosso path atual
   const location = useLocation();
 
@@ -15,6 +16,12 @@ function Header() {
   const navigate = useNavigate();
 
   const buscaPokemon = pokedex.find((pokemon) => pokemon.id === pokemonNow.id);
+
+  function openModalRemove() {
+    setModal(true);
+    removeFromPokedex(pokemonNow);
+    setCardModal(0);
+  }
 
   const renderHeader = () => {
     switch (location.pathname) {
@@ -50,7 +57,7 @@ function Header() {
             {buscaPokemon ? (
               <button
                 className="removeButton"
-                onClick={() => removeFromPokedex(pokemonNow)}
+                onClick={() => openModalRemove()}
               >
                 Excluir da Pokédex
               </button>
